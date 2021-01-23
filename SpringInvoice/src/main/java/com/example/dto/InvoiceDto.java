@@ -1,13 +1,16 @@
-package com.example.SpringInvoice.dto;
+package com.example.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+
 public class InvoiceDto {
     @JsonProperty("user_id")
-    // @NotBlank -
+    @NotBlank
     private String userId;
 
-    // @Min(10)
+    @Min(10)
     // @Max(100)
     private Integer amount;
 

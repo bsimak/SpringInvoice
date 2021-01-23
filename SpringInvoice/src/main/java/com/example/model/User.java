@@ -1,4 +1,4 @@
-package com.example.SpringInvoice.model;
+package com.example.model;
 
 public class User {
 
