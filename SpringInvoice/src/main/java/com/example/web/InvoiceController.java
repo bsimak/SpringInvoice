@@ -31,7 +31,7 @@ public class InvoiceController {
 
     // Eingabe e.g.: http://localhost:8080/invoices/amount/50
     @GetMapping("/invoices/amount/{amount}")
-    public Iterable<Invoice> invoicesAmount(@PathVariable("amount")Integer amount) {
+    public Iterable<Invoice> invoicesAmount(@PathVariable Integer amount) {
         return invoiceService.findByAmount(amount);
     }
 
