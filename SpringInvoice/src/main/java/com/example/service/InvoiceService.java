@@ -14,9 +14,6 @@ import javax.annotation.PreDestroy;
 @Component
 public class InvoiceService {
 
-    // private List<Invoice> invoices = new CopyOnWriteArrayList<>();
-    // private final JdbcTemplate jdbcTemplate;
-
     public final InvoiceRepository invoiceRepository;
 
    // private final UserService userService;
@@ -44,7 +41,19 @@ public class InvoiceService {
     public Iterable<Invoice> findAll() {
         return invoiceRepository.findAll();
     }
-
+    // ------ FIND Invoices by User -----------
+    @Transactional
+    public Iterable<Invoice> findByUserId(String UserId) {
+        System.out.println("Suche Invoices nach User");
+        return invoiceRepository.findByUserId(UserId);
+    }
+    // ------ FIND Invoices by Amount -----------
+    @Transactional
+    public Iterable<Invoice> findByAmount(Integer amount) {
+        System.out.println("Suche Invoices nach Amount");
+        return invoiceRepository.findByAmount(amount);
+    }
+    // ------- CREATE Invoices -----------------
     @Transactional
     public Invoice create(String userId, Integer amount) {
         String generatePdfUrl = cdnUrl + "/images/default/sample.pdf";

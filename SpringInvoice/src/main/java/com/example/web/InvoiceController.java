@@ -3,10 +3,7 @@ package com.example.web;
 import com.example.dto.InvoiceDto;
 import com.example.model.Invoice;
 import com.example.service.InvoiceService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -24,6 +21,18 @@ public class InvoiceController {
     @GetMapping("/invoices")
     public Iterable<Invoice> invoices() {
         return invoiceService.findAll();
+    }
+
+    // Eingabe e.g.: http://localhost:8080/invoices/user/Barbara
+    @GetMapping("/invoices/user/{userId}")
+    public Iterable<Invoice> invoicesByUser(@PathVariable("userId")String user_id) {
+        return invoiceService.findByUserId(user_id);
+    }
+
+    // Eingabe e.g.: http://localhost:8080/invoices/amount/50
+    @GetMapping("/invoices/amount/{amount}")
+    public Iterable<Invoice> invoicesAmount(@PathVariable("amount")Integer amount) {
+        return invoiceService.findByAmount(amount);
     }
 
     // ---------------POST Method ----------------
