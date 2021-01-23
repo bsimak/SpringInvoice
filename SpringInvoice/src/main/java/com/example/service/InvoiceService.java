@@ -21,14 +21,6 @@ public class InvoiceService {
 
    // private final UserService userService;
     private final String cdnUrl;
-/*
-    public InvoiceService(UserService userService, InvoiceRepository invoiceRepository,
-                          @Value("${cdn.url}") String cdnUrl) {
-        this.userService = userService;
-        this.invoiceRepository = invoiceRepository;
-        this.cdnUrl = cdnUrl;
-    }
-    */
 
     public InvoiceService(InvoiceRepository invoiceRepository,
                           @Value("${cdn.url}") String cdnUrl) {
