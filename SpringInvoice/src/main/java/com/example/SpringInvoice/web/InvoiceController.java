@@ -15,20 +15,20 @@ import java.util.List;
 public class InvoiceController {
 
     private final InvoiceService invoiceService;
-
-    public InvoiceController(InvoiceService invoiceService) {
+    public InvoiceController(InvoiceService invoiceService){
         this.invoiceService = invoiceService;
     }
-    // GET Method
+
+    // ------------- GET Method ---------------
     // @RequestMapping(value="/invoices", method = RequestMethod.GET)
     @GetMapping("/invoices")
     public List<Invoice> invoices() {
         return invoiceService.findAll();
     }
 
-    // Mit validation Bean in ApplicationLauncher Class
+    // ---------------POST Method ----------------
     @PostMapping("/invoices")
-    public Invoice createInvoice( @RequestBody InvoiceDto invoiceDto) {
+    public Invoice create( @Valid @RequestBody InvoiceDto invoiceDto) {
         return invoiceService.create(invoiceDto.getUserId(), invoiceDto.getAmount());
     }
 }
